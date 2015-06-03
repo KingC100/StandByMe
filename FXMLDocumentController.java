@@ -1,6 +1,5 @@
 package standbyme;
 
-import java.math.BigDecimal;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
@@ -34,13 +33,16 @@ public class FXMLDocumentController implements Initializable {
     public TextField textField;
 
     @FXML
-    public ImageView imageView;
+    public ImageView img_Pokemon;
+
+    @FXML
+    public ImageView img_TypeFirst;
+
+    @FXML
+    public ImageView img_TypeSecond;
 
     @FXML
     public GridPane gridPane;
-
-//    @FXML
-//    public Label olbl_Name;
     @FXML
     public Label olbl_TypeFirst;
     @FXML
@@ -83,30 +85,17 @@ public class FXMLDocumentController implements Initializable {
         gridPane.setGridLinesVisible(true);
 
         WebEngine engine = webView.getEngine();
-        engine.load("https://www.google.co.jp/search?safe=off&tbm=isch&q=%E7%B5%A2%E8%BE%BB%E8%A9%9E&ei=RWdtVYrYMsPj8AXOt4LQDA");
+        engine.load("http://animewallpaperstock.com/wallpaper/01a/amagami/solo/ayatsuji-tsukasa0002.jpg");
 
         // テキスト変更時にアイコン、グリッドの情報を更新する。
         textField.textProperty().addListener((ObservableValue<? extends String> observableValue, String s, String s2) -> {
 
+            // ポケモンの基礎情報をMapへ格納
             pMap = Get_pData(textField.getText());
 
-            // アイコンをセット
-            Image image;
-            if (Chk_Exists(pMap)) {
-                // アイコン取ってくる。
-                image = new Image("file:res\\icons\\" + pMap.get("Number") + ".png");
-                // アイコンセット。
-                imageView.setImage(image);
-            } else {
-                image = new Image("file:res\\icons\\0.png");
-                // アイコンセット。
-                imageView.setImage(image);
-                return;
-            }
-
-//            olbl_Name.setText(pMap.get("Name"));
-            olbl_TypeFirst.setText(pMap.get("TypeFirst"));
-            olbl_TypeSecond.setText(pMap.get("TypeSecond"));
+            // 基礎情報(文字)をセット
+            String typeFirst = pMap.get("TypeFirst");
+            String typeSecond = pMap.get("TypeSecond");
             olbl_SkillFirst.setText(pMap.get("SkillFirst"));
             olbl_SkillSecond.setText(pMap.get("SkillSecond"));
             olbl_SkillDream.setText(pMap.get("SkillDream"));
@@ -115,6 +104,35 @@ public class FXMLDocumentController implements Initializable {
             olbl_B.setText(pMap.get("B"));
             olbl_C.setText(pMap.get("C"));
             olbl_D.setText(pMap.get("D"));
+
+            // アイコンをセット
+            Image image, type1, type2,img_empty;
+            if (Name_NotExists(pMap)) {
+                // ハズレの場合
+                olbl_SkillFirst.setText("");
+                olbl_SkillSecond.setText("");
+                olbl_SkillDream.setText("");
+                olbl_H.setText("");
+                olbl_A.setText("");
+                olbl_B.setText("");
+                olbl_C.setText("");
+                olbl_D.setText("");
+                // "?"アイコンセット。
+                img_empty = new Image("file:res\\gifs\\0.png");
+                img_Pokemon.setImage(img_empty);
+                img_TypeFirst.setImage(img_empty);
+                img_TypeSecond.setImage(img_empty);
+                return;
+            } else {
+                // ポケモンのアイコンをセット
+                image = new Image("file:res\\gifs\\" + pMap.get("Number") + ".gif");
+                img_Pokemon.setImage(image);
+                // タイプのアイコンをセット
+                type1 = new Image("file:res\\types\\" + typeFirst + ".gif");
+                img_TypeFirst.setImage(type1);
+                type2 = new Image("file:res\\types\\" + typeSecond + ".gif");
+                img_TypeSecond.setImage(type2);
+            }
 
             // すばやさ計算
             String baseSpeed = pMap.get("S");
@@ -134,6 +152,16 @@ public class FXMLDocumentController implements Initializable {
         });
     }
 
+    /**
+     * *
+     * すばやさ計算 ((種族値×2+個体値+努力値÷4)×レベル÷100+5)×せいかく補正
+     *
+     * @param bS
+     * @param EV
+     * @param nature
+     * @param stages
+     * @return
+     */
     public String CaliculateSpeed(int bS, int EV, double nature, double stages) {
 
         double dSpeed = ((((bS * 2) + 31 + EV / 4) * 50 / 100 + 5) * nature);
@@ -145,17 +173,27 @@ public class FXMLDocumentController implements Initializable {
         return sSpeed;
     }
 
-    public boolean Chk_Exists(Map<String, String> pMap) {
-        // アイコンセット。
-
-        return !"0".equals(pMap.get("Number"));
+    /**
+     * *
+     * 入力された名前が存在するか確認する。
+     *
+     * @param pMap
+     * @return
+     */
+    public boolean Name_NotExists(Map<String, String> pMap) {
+        return "0".equals(pMap.get("Number"));
     }
 
+    /**
+     * *
+     * Searchボタン
+     *
+     * @param event
+     */
     @FXML
     public void OnEntered(ActionEvent event) {
-        WebEngine engine = webView.getEngine();
-        engine.load("https://www.google.co.jp/search?safe=off&tbm=isch&q=%E7%B5%A2%E8%BE%BB%E8%A9%9E&ei=RWdtVYrYMsPj8AXOt4LQDA");
-        engine.load("https://www.google.co.jp/webhp?hl=ja#safe=off&hl=ja&q=" + pMap.get("Name") + "対戦考察");
+        WebEngine engine = webView.getEngine();;
+        engine.load("https://www.google.co.jp/webhp?hl=ja#safe=off&hl=ja&q=" + textField.getText() + "対戦考察");
     }
 
 }
