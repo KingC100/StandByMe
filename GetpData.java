@@ -37,9 +37,8 @@ public class GetpData {
             Document doc = builder.parse(new FileInputStream("res\\pData.xml"));
             Element root = doc.getDocumentElement();
 
-            /**
-             * Nameで検索を掛け、 一致したノードのName取得
-             */
+
+            // <Name>ノード対して検索を掛け、 pNameと一致したノードの基礎情報を取得する。
             Element pokemon, types, individuals, skills;
 
             // <Pokemon>ノード
@@ -51,10 +50,8 @@ public class GetpData {
                 // <Pokemon>ルート
                 pokemon = (Element) root.getElementsByTagName("Pokemon").item(i);
 
-
                 // pName(入力)とNodeのNameが一致した場合、Numberを返す。
                 if (pName.equals(((Element) pokemon.getElementsByTagName("Name").item(0)).getTextContent())) {
-//                    number = (Element) pokemon.getElementsByTagName("Number").item(0);
 
                     // <Types>ルート
                     types = (Element) pokemon.getElementsByTagName("Types").item(0);

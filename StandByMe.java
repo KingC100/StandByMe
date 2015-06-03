@@ -20,8 +20,8 @@ public class StandByMe extends Application {
         Scene scene = new Scene(root);
 
         stage.setScene(scene);
-        
         Image icon = new Image("file:res\\icon.png");
+//        Image icon = new Image((getClass().getResource("res/icon.png")).toString());
         stage.getIcons().add(icon);
         // タイトルセット
         stage.setTitle("StandByMe");
