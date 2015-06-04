@@ -22,7 +22,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
-import static standbyme.GetpData.Get_pData;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
@@ -34,6 +33,7 @@ import javafx.scene.input.KeyCombination;
 public class FXMLDocumentController implements Initializable {
 
     Map<String, String> pMap = new HashMap<>();
+    GetpData gpd = new GetpData();
 
     @FXML
     public Button bontan;
@@ -111,13 +111,13 @@ public class FXMLDocumentController implements Initializable {
         textField.textProperty().addListener((ObservableValue<? extends String> observableValue, String s, String s2) -> {
 
             // ポケモンの基礎情報をMapへ格納
-            pMap = Get_pData(textField.getText());
+            pMap = gpd.Get_pData(textField.getText());
 
             String typeFirst = pMap.get("TypeFirst");
             String typeSecond = pMap.get("TypeSecond");
 
             // アイコンをセット
-            Image image, type1, type2, img_empty;
+            Image image_pIcon, image_Type1, image_Type2, img_Empty = null;
             if (Name_NotExists(pMap)) {
                 // ハズレの場合
                 olbl_Number.setText("");
@@ -130,20 +130,33 @@ public class FXMLDocumentController implements Initializable {
                 olbl_C.setText("");
                 olbl_D.setText("");
                 // "?"アイコンセット。
-                img_empty = new Image("file:res\\gifs\\0.png");
-                img_Pokemon.setImage(img_empty);
-                img_TypeFirst.setImage(img_empty);
-                img_TypeSecond.setImage(img_empty);
+//                img_empty = new Image("file:res\\gifs\\0.png"); //jarにすると動かない。
+
+                URL url_Empty = StandByMe.class.getResource("res/gifs/0.png");
+                img_Empty = new Image(url_Empty.toString());
+
+                img_Pokemon.setImage(img_Empty);
+                img_TypeFirst.setImage(img_Empty);
+                img_TypeSecond.setImage(img_Empty);
                 return;
             } else {
                 // ポケモンのアイコンをセット
-                image = new Image("file:res\\gifs\\" + pMap.get("Number") + ".gif");
-                img_Pokemon.setImage(image);
+                URL url_pIcon = StandByMe.class.getResource("res/gifs/" + pMap.get("Number") + ".gif");
+                image_pIcon = new Image(url_pIcon.toString());
+                img_Pokemon.setImage(image_pIcon);
+
                 // タイプのアイコンをセット
-                type1 = new Image("file:res\\types\\" + typeFirst + ".gif");
-                img_TypeFirst.setImage(type1);
-                type2 = new Image("file:res\\types\\" + typeSecond + ".gif");
-                img_TypeSecond.setImage(type2);
+                URL url_Type1 = StandByMe.class.getResource("res/types/" + typeFirst + ".gif");
+                image_Type1 = new Image(url_Type1.toString());
+                img_TypeFirst.setImage(image_Type1);
+
+                if (typeSecond.equals("")) {
+                    img_TypeSecond.setImage(img_Empty);
+                } else {
+                    URL url_Type2 = StandByMe.class.getResource("res/types/" + typeSecond + ".gif"); 
+                    image_Type2 = new Image(url_Type2.toString());
+                    img_TypeSecond.setImage(image_Type2);
+                }
             }
 
             // 基礎情報(文字)をセット
@@ -209,33 +222,6 @@ public class FXMLDocumentController implements Initializable {
      */
     public boolean Name_NotExists(Map<String, String> pMap) {
         return "0".equals(pMap.get("Number"));
-    }
-    
-    public static final URL getJarFileURL(Object object) {
-    try {
-        //ClassLoader から JAR URL の形式の文字列を作る
-        final ClassLoader loader = object.getClass().getClassLoader();
-        final String name = object.getClass().getName().replace('.', '/') + ".class";
-        final URL url = loader.getResource(name);
-        //パターンマッチングで URL 部分だけ抽出(ただし、"jar:～.jar!/" しか考慮してない)
-        final Pattern p = Pattern.compile("^jar\\:(.+?\\.jar)\\!\\/(.*)");  
-        final Matcher m = p.matcher(url.toString());
-        if (m.matches()) {
-            final MatchResult res = m.toMatchResult();
-            return new URL(res.group(1));
-        }
-    } catch (Exception e) {
-        //MalformedURLException, ClassCastException, NullPointerException, ...
-    }
-    return null;    //取得失敗した場合はすべて null
-}
-
-    public static final String toJarURL(String fileName, Object context) {
-        final URL url = getJarFileURL(context);  //jar の url を取得
-        if (url == null) {
-            return null;    //失敗
-        }
-        return "jar:" + url.toString() + "!/" + fileName;  //JAR URL 構文にするだけ
     }
 
     /**

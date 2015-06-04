@@ -1,7 +1,7 @@
 package standbyme;
 
-import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import javax.xml.parsers.DocumentBuilder;
@@ -24,7 +24,7 @@ public class GetpData {
      * @param pName
      * @return
      */
-    public static Map<String, String> Get_pData(String pName) {
+    public Map<String, String> Get_pData(String pName) {
 
         Map<String, String> map = new HashMap<>();
 
@@ -34,9 +34,10 @@ public class GetpData {
         try {
             DocumentBuilderFactory dbfactory = DocumentBuilderFactory.newInstance();
             builder = dbfactory.newDocumentBuilder();
-            Document doc = builder.parse(new FileInputStream("res\\pData.xml"));
+            URL path = this.getClass().getResource("res/pData.xml");
+//            System.out.println(path.getPath());
+            Document doc = builder.parse(path.openStream());
             Element root = doc.getDocumentElement();
-
 
             // <Name>ノード対して検索を掛け、 pNameと一致したノードの基礎情報を取得する。
             Element pokemon, types, individuals, skills;
@@ -67,13 +68,13 @@ public class GetpData {
                     if (((Element) types.getElementsByTagName("TypeFirst").item(0)).getTextContent().equals(pTypeSecond)) {
                         pTypeSecond = "";
                     }
-                    
+
                     // Mapへ値を格納する。
                     map.put("Number", ((Element) pokemon.getElementsByTagName("Number").item(0)).getTextContent());
                     map.put("Name", ((Element) pokemon.getElementsByTagName("Name").item(0)).getTextContent());
                     map.put("TypeFirst", ((Element) types.getElementsByTagName("TypeFirst").item(0)).getTextContent());
                     map.put("TypeSecond", pTypeSecond);
-                    map.put("HP",((Element) individuals.getElementsByTagName("HP").item(0)).getTextContent());
+                    map.put("HP", ((Element) individuals.getElementsByTagName("HP").item(0)).getTextContent());
                     map.put("A", ((Element) individuals.getElementsByTagName("A").item(0)).getTextContent());
                     map.put("B", ((Element) individuals.getElementsByTagName("B").item(0)).getTextContent());
                     map.put("C", ((Element) individuals.getElementsByTagName("C").item(0)).getTextContent());

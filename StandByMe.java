@@ -1,5 +1,6 @@
 package standbyme;
 
+import java.net.URL;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -20,8 +21,9 @@ public class StandByMe extends Application {
         Scene scene = new Scene(root);
 
         stage.setScene(scene);
-        Image icon = new Image("file:res\\icon.png");
-//        Image icon = new Image((getClass().getResource("res/icon.png")).toString());
+//        Image icon = new Image("file:res\\icon.png"); // project以下を参照。
+        URL url_Empty = StandByMe.class.getResource("res/icon.png"); //src以下を参照。
+        Image icon = new Image(url_Empty.toString());
         stage.getIcons().add(icon);
         // タイトルセット
         stage.setTitle("StandByMe");
