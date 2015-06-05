@@ -8,9 +8,6 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.regex.MatchResult;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -34,6 +31,7 @@ public class FXMLDocumentController implements Initializable {
 
     Map<String, String> pMap = new HashMap<>();
     GetpData gpd = new GetpData();
+    GetResourcePath getResourcePath = new GetResourcePath();
 
     @FXML
     public Button bontan;
@@ -92,12 +90,15 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public Label olbl_s;
 
+    // 隠し項目
     @FXML
-    public MenuItem btn_SearchBattle; // 隠し項目
+    public MenuItem btn_SearchBattle;
     @FXML
-    public MenuItem btn_SearchWiki; // 隠し項目
+    public MenuItem btn_SearchWiki;
     @FXML
-    public MenuItem btn_SearchDic; // 隠し項目
+    public MenuItem btn_SearchDic;
+    @FXML
+    public MenuItem btn_Debug;
 
 //    @FXML
 //    public WebView webView;
@@ -106,6 +107,9 @@ public class FXMLDocumentController implements Initializable {
         this.btn_SearchBattle.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.ALT_DOWN, KeyCombination.SHORTCUT_ANY));
         this.btn_SearchWiki.setAccelerator(new KeyCodeCombination(KeyCode.D, KeyCombination.ALT_DOWN, KeyCombination.SHORTCUT_ANY));
         this.btn_SearchDic.setAccelerator(new KeyCodeCombination(KeyCode.F, KeyCombination.ALT_DOWN, KeyCombination.SHORTCUT_ANY));
+        
+        // Debug.
+        this.btn_Debug.setAccelerator(new KeyCodeCombination(KeyCode.Q, KeyCombination.ALT_DOWN, KeyCombination.SHORTCUT_ANY));
 
         // テキスト変更時にアイコン、グリッドの情報を更新する。
         textField.textProperty().addListener((ObservableValue<? extends String> observableValue, String s, String s2) -> {
@@ -130,9 +134,7 @@ public class FXMLDocumentController implements Initializable {
                 olbl_C.setText("");
                 olbl_D.setText("");
                 // "?"アイコンセット。
-//                img_empty = new Image("file:res\\gifs\\0.png"); //jarにすると動かない。
-
-                URL url_Empty = StandByMe.class.getResource("res/gifs/0.png");
+                URL url_Empty = getResourcePath.GetResourcePath("gifs/0.png");
                 img_Empty = new Image(url_Empty.toString());
 
                 img_Pokemon.setImage(img_Empty);
@@ -140,20 +142,20 @@ public class FXMLDocumentController implements Initializable {
                 img_TypeSecond.setImage(img_Empty);
                 return;
             } else {
-                // ポケモンのアイコンをセット
-                URL url_pIcon = StandByMe.class.getResource("res/gifs/" + pMap.get("Number") + ".gif");
+                // ポケモンのアイコンをセット             
+                URL url_pIcon = getResourcePath.GetResourcePath("gifs/" + pMap.get("Number") + ".gif");
                 image_pIcon = new Image(url_pIcon.toString());
                 img_Pokemon.setImage(image_pIcon);
 
                 // タイプのアイコンをセット
-                URL url_Type1 = StandByMe.class.getResource("res/types/" + typeFirst + ".gif");
+                URL url_Type1 = getResourcePath.GetResourcePath("types/" + typeFirst + ".gif");
                 image_Type1 = new Image(url_Type1.toString());
                 img_TypeFirst.setImage(image_Type1);
 
-                if (typeSecond.equals("")) {
+                if (typeSecond.equals("nothing")) {
                     img_TypeSecond.setImage(img_Empty);
                 } else {
-                    URL url_Type2 = StandByMe.class.getResource("res/types/" + typeSecond + ".gif"); 
+                    URL url_Type2 = getResourcePath.GetResourcePath("types/" + typeSecond + ".gif");
                     image_Type2 = new Image(url_Type2.toString());
                     img_TypeSecond.setImage(image_Type2);
                 }
@@ -176,17 +178,17 @@ public class FXMLDocumentController implements Initializable {
 
             int bS = Integer.parseInt(baseSpeed);
             // 最速
-            olbl_SV.setText(CaliculateSpeed(bS, 31, 252, 1.1, 1));
+            olbl_SV.setText(CalculateSpeed(bS, 31, 252, 1.1, 1));
             // 準速
-            olbl_SU.setText(CaliculateSpeed(bS, 31, 252, 1.0, 1));
+            olbl_SU.setText(CalculateSpeed(bS, 31, 252, 1.0, 1));
             // 無振り無補正
-            olbl_S0.setText(CaliculateSpeed(bS, 31, 0, 1.0, 1));
+            olbl_S0.setText(CalculateSpeed(bS, 31, 0, 1.0, 1));
             // 最速+1
-            olbl_SV1.setText(CaliculateSpeed(bS, 31, 252, 1.1, 1.5));
+            olbl_SV1.setText(CalculateSpeed(bS, 31, 252, 1.1, 1.5));
             // 最速+2
-            olbl_SV2.setText(CaliculateSpeed(bS, 31, 252, 1.1, 2));
+            olbl_SV2.setText(CalculateSpeed(bS, 31, 252, 1.1, 2));
             // 最遅
-            olbl_s.setText(CaliculateSpeed(bS, 0, 0, 0.9, 1));
+            olbl_s.setText(CalculateSpeed(bS, 0, 0, 0.9, 1));
         });
 
     }
@@ -201,8 +203,8 @@ public class FXMLDocumentController implements Initializable {
      * @param nature　性格補正
      * @param stages　その他補正
      * @return
-     */
-    public String CaliculateSpeed(int bS, int IV, int EV, double nature, double stages) {
+     */ 
+    public String CalculateSpeed(int bS, int IV, int EV, double nature, double stages) {
 
         double dSpeed = ((((bS * 2) + IV + EV / 4) * 50 / 100 + 5) * nature);
         int iSpeed = (int) dSpeed;
@@ -224,6 +226,7 @@ public class FXMLDocumentController implements Initializable {
         return "0".equals(pMap.get("Number"));
     }
 
+    /* 以下3つは検索機能 */
     /**
      * *
      * 第六世代対戦考察
@@ -273,6 +276,12 @@ public class FXMLDocumentController implements Initializable {
         URI uri = new URI(uriString);
         desktop.browse(uri);
 
+    }
+
+    @FXML
+    public void On_Debug(ActionEvent event) throws IOException, URISyntaxException {
+        GetAffinity ga = new GetAffinity();
+        Map<String, String> Get_Types = ga.Get_Types("でんき","ひこう");    // 2015-06-05. 単タイプ、特性未対応。
     }
 
 }

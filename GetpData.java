@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -31,21 +33,19 @@ public class GetpData {
         String pTypeSecond;
 
         DocumentBuilder builder;
-        try {
-            DocumentBuilderFactory dbfactory = DocumentBuilderFactory.newInstance();
+        DocumentBuilderFactory dbfactory = DocumentBuilderFactory.newInstance();
+
+        try {           
             builder = dbfactory.newDocumentBuilder();
-            URL path = this.getClass().getResource("res/pData.xml");
-//            System.out.println(path.getPath());
-            Document doc = builder.parse(path.openStream());
+            GetResourcePath getResourcePath = new GetResourcePath();
+            URL url = getResourcePath.GetResourcePath("xml/pData.xml");
+            Document doc = builder.parse(url.openStream());
+
+//        Document doc = builder.parse(path.openStream());
             Element root = doc.getDocumentElement();
 
-            // <Name>ノード対して検索を掛け、 pNameと一致したノードの基礎情報を取得する。
             Element pokemon, types, individuals, skills;
-
-            // <Pokemon>ノード
             NodeList nodeList = root.getElementsByTagName("Pokemon");
-
-            // <Pokemon>内で<Name>が一致するNodeの<Number>を取得する。
             for (int i = 0; i < nodeList.getLength(); i++) {
 
                 // <Pokemon>ルート
@@ -66,7 +66,7 @@ public class GetpData {
                     // タイプ1, 2が同一の場合は1のみ表示(元データによる都合)。
                     pTypeSecond = ((Element) types.getElementsByTagName("TypeSecond").item(0)).getTextContent();
                     if (((Element) types.getElementsByTagName("TypeFirst").item(0)).getTextContent().equals(pTypeSecond)) {
-                        pTypeSecond = "";
+                        pTypeSecond = "nothing";
                     }
 
                     // Mapへ値を格納する。
@@ -86,11 +86,9 @@ public class GetpData {
                     return map;
                 }
             }
-            // 一致なしの場合、0を返す。
             map.put("Number", "0");
-
         } catch (ParserConfigurationException | SAXException | IOException ex) {
-            System.out.println(ex);
+            Logger.getLogger(GetpData.class.getName()).log(Level.SEVERE, null, ex);
         }
         return map;
     }
