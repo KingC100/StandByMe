@@ -107,7 +107,7 @@ public class FXMLDocumentController implements Initializable {
         this.btn_SearchBattle.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.ALT_DOWN, KeyCombination.SHORTCUT_ANY));
         this.btn_SearchWiki.setAccelerator(new KeyCodeCombination(KeyCode.D, KeyCombination.ALT_DOWN, KeyCombination.SHORTCUT_ANY));
         this.btn_SearchDic.setAccelerator(new KeyCodeCombination(KeyCode.F, KeyCombination.ALT_DOWN, KeyCombination.SHORTCUT_ANY));
-        
+
         // Debug.
         this.btn_Debug.setAccelerator(new KeyCodeCombination(KeyCode.Q, KeyCombination.ALT_DOWN, KeyCombination.SHORTCUT_ANY));
 
@@ -203,7 +203,7 @@ public class FXMLDocumentController implements Initializable {
      * @param nature　性格補正
      * @param stages　その他補正
      * @return
-     */ 
+     */
     public String CalculateSpeed(int bS, int IV, int EV, double nature, double stages) {
 
         double dSpeed = ((((bS * 2) + IV + EV / 4) * 50 / 100 + 5) * nature);
@@ -281,7 +281,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     public void On_Debug(ActionEvent event) throws IOException, URISyntaxException {
         GetAffinity ga = new GetAffinity();
-        Map<String, String> Get_Types = ga.Get_Types("でんき","ひこう");    // 2015-06-05. 単タイプ、特性未対応。
+//        Map<String, String[]> eee = ga.Get_Types("はがね", "nothing");
+        Map<String, String[]> sss = ga.Get_Types("ほのお", "いわ");
     }
 
 }
