@@ -6148,7 +6148,7 @@
                 <Skills>
                     <SkillFirst>ふしぎなまもり</SkillFirst>
                     <SkillSecond></SkillSecond>
-                    <SkillDream>ふしぎなまもり</SkillDream>
+                    <SkillDream></SkillDream>
                 </Skills>
     </Pokemon>
     <Pokemon>
@@ -16269,6 +16269,27 @@
         </Individuals>
         <Skills>
             <SkillFirst>マジックミラー</SkillFirst>
+            <SkillSecond></SkillSecond>
+            <SkillDream></SkillDream>
+        </Skills>
+    </Pokemon>
+    <Pokemon>
+        <Name>メガミミロップ</Name>
+        <Number>428-mega</Number>
+        <Types>
+            <TypeFirst>ノーマル</TypeFirst>
+            <TypeSecond>かくとう</TypeSecond>
+        </Types>
+        <Individuals>
+            <HP>65</HP>
+            <A>136</A>
+            <B>94</B>
+            <C>54</C>
+            <D>96</D>
+            <S>135</S>
+        </Individuals>
+        <Skills>
+            <SkillFirst>きもったま</SkillFirst>
             <SkillSecond></SkillSecond>
             <SkillDream></SkillDream>
         </Skills>

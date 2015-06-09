@@ -213,15 +213,13 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private MenuItem btn_SearchDic;
     @FXML
-    private MenuItem btn_Debug;
+    private MenuItem btn_Damage;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
         Set_ShortCutKey();
 
-        // タイプアイコンをImageで作成
-//        TypesIcon();
         // テキスト変更時にアイコン、グリッドの情報を更新する。
         textField.textProperty().addListener((ObservableValue<? extends String> observableValue, String s, String s2) -> {
 
@@ -358,7 +356,7 @@ public class FXMLDocumentController implements Initializable {
         this.btn_SearchBattle.setAccelerator(new KeyCodeCombination(KeyCode.S, KeyCombination.ALT_DOWN, KeyCombination.SHORTCUT_ANY));
         this.btn_SearchWiki.setAccelerator(new KeyCodeCombination(KeyCode.D, KeyCombination.ALT_DOWN, KeyCombination.SHORTCUT_ANY));
         this.btn_SearchDic.setAccelerator(new KeyCodeCombination(KeyCode.F, KeyCombination.ALT_DOWN, KeyCombination.SHORTCUT_ANY));
-        this.btn_Debug.setAccelerator(new KeyCodeCombination(KeyCode.Q, KeyCombination.ALT_DOWN, KeyCombination.SHORTCUT_ANY));
+        this.btn_Damage.setAccelerator(new KeyCodeCombination(KeyCode.Q, KeyCombination.ALT_DOWN, KeyCombination.SHORTCUT_ANY));
 
     }
 
@@ -408,6 +406,23 @@ public class FXMLDocumentController implements Initializable {
     public void On_SearchDic(ActionEvent event) throws IOException, URISyntaxException {
         Desktop desktop = Desktop.getDesktop();
         String uriString = "http://yakkun.com/xy/zukan/n" + olbl_Number.getText();
+        URI uri = new URI(uriString);
+        desktop.browse(uri);
+
+    }
+
+    /**
+     * *
+     * ダメージ計算
+     *
+     * @param event
+     * @throws java.io.IOException
+     * @throws java.net.URISyntaxException
+     */
+    @FXML
+    public void On_Damage(ActionEvent event) throws IOException, URISyntaxException {
+        Desktop desktop = Desktop.getDesktop();
+        String uriString = "http://pokemon-trainer.net/xy/dmcs/";
         URI uri = new URI(uriString);
         desktop.browse(uri);
 

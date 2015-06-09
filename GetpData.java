@@ -40,8 +40,6 @@ public class GetpData {
             GetResourcePath getResourcePath = new GetResourcePath();
             URL url = getResourcePath.GetResourcePath("xml/pData.xml");
             Document doc = builder.parse(url.openStream());
-
-//        Document doc = builder.parse(path.openStream());
             Element root = doc.getDocumentElement();
 
             Element pokemon, types, individuals, skills;

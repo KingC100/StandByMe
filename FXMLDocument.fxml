@@ -148,7 +148,7 @@
               <MenuItem fx:id="btn_SearchBattle" mnemonicParsing="false" onAction="#On_SearchBattle" text="対戦考察" />
                   <MenuItem fx:id="btn_SearchWiki" mnemonicParsing="false" onAction="#On_SearchWiki" text="wiki" />
                   <MenuItem fx:id="btn_SearchDic" mnemonicParsing="false" onAction="#On_SearchDic" text="図鑑" />
-                  <MenuItem fx:id="btn_Debug" mnemonicParsing="false" text="Unspecified Action" />
+                  <MenuItem fx:id="btn_Damage" mnemonicParsing="false" onAction="#On_Damage" text="ダメージ計算" />
             </items>
           </Menu>
         </menus>
