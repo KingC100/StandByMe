@@ -4,6 +4,7 @@
 
 名前入力でアイコン、基礎情報表示、タイプ相性表の表示。
 ショートカットキーで名前 + 対戦考察wiki, wiki, 図鑑で検索。
+
 ![image_alt_text](https://github.com/KingC100/StandByMe/blob/master/bosugodora.jpeg?raw=true)
 ![image_alt_text](https://github.com/KingC100/StandByMe/blob/master/bo-manda.jpeg?raw=true)
 
