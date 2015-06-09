@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package standbyme;
 
 import java.io.IOException;
@@ -25,8 +20,6 @@ import org.xml.sax.SAXException;
  */
 public class GetAffinity {
 
-    String[] typeList = {"ノーマル", "ほのお", "みず", "でんき", "くさ", "こおり", "かくとう", "どく", "じめん",
-        "ひこう", "エスパー", "むし", "いわ", "ゴースト", "ドラゴン", "あく", "はがね", "フェアリー"};
     Boolean bl_Type2 = true;
 
     /**
@@ -37,7 +30,6 @@ public class GetAffinity {
      * @return
      */
     public Map<String, String[]> Get_Types(String typeFirst, String typeSecond) {
-        System.out.println("TargetType 1:" + typeFirst + ", 2:" + typeSecond);
 
         if (typeSecond.equals("nothing")) {
             bl_Type2 = false;
@@ -70,7 +62,7 @@ public class GetAffinity {
                 // タイプ1の相性を取得する。
                 if (typeFirst.equals(((Element) typeInfo.getElementsByTagName("TypeName").item(0)).getTextContent())) {
 
-                    for (String typeList1 : typeList) {
+                    for (String typeList1 : Const.typeAry) {
                         // タイプ相性の格納 <"タイプ名", "ダメージ相性"> 
                         map_TypeFirst.put(typeList1, ((Element) affinity.getElementsByTagName(typeList1).item(0)).getTextContent());
                     }
@@ -80,16 +72,17 @@ public class GetAffinity {
                     // タイプ1、タイプ2を合わせたタイプ相性の結果を求める。
                     if (typeSecond.equals(((Element) typeInfo.getElementsByTagName("TypeName").item(0)).getTextContent())) {
 
-                        for (String typeList2 : typeList) {
+                        for (String typeList2 : Const.typeAry) {
                             // タイプ相性の格納 <"タイプ名", "ダメージ相性">
                             map_TypeSecond.put(typeList2, ((Element) affinity.getElementsByTagName(typeList2).item(0)).getTextContent());
-
                         }
                     }
                 }
             }
+            // Mapへ格納
             map_Result = CalculateAffinity(map_TypeFirst, map_TypeSecond);
             return map_Result;
+
         } catch (ParserConfigurationException | SAXException | IOException ex) {
             Logger.getLogger(GetpData.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -98,7 +91,7 @@ public class GetAffinity {
 
     /**
      * *
-     * タイプ相性計算(タイプ1, タイプ2, とくせい)
+     * タイプ相性計算(タイプ1, タイプ2)
      *
      * @param map_TypeFirst
      * @param map_TypeSecond
@@ -110,59 +103,63 @@ public class GetAffinity {
         double type2 = 0;
         double res;
 
-        int typeValues = typeList.length;
-        
-        String[] x4 = new String[typeValues];
-        String[] x2 = new String[typeValues];
-        String[] x1 = new String[typeValues];
-        String[] x05 = new String[typeValues];
-        String[] x025 = new String[typeValues];
-        String[] x0 = new String[typeValues];
-        int k = 0;
-        Map<String, String> map_Result = new HashMap<>();
-//        String[][] ary_Result = null;
-//        String[] ary_Correct = {"*4", "*2", "1/2", "1/4", "0"};
+        String[] x4 = new String[Const.typeTotalNumber];
+        String[] x2 = new String[Const.typeTotalNumber];
+        String[] x1 = new String[Const.typeTotalNumber];
+        String[] x05 = new String[Const.typeTotalNumber];
+        String[] x025 = new String[Const.typeTotalNumber];
+        String[] x0 = new String[Const.typeTotalNumber];
+        Map<String, String[]> map_Result = new HashMap<>();
 
-        for (int j = 0; j < typeValues; j++) {
+        // タイプ総数だけ回す。
+        for (int j = 0; j < Const.typeTotalNumber; j++) {
 
-            type1 = Double.parseDouble(map_TypeFirst.get(typeList[j]));
+            // タイプ1、タイプ2を掛けあわせたタイプ相性を計算。
+            type1 = Double.parseDouble(map_TypeFirst.get(Const.typeAry[j]));
+            // タイプ2が存在するか
             if (bl_Type2) {
-                type2 = Double.parseDouble(map_TypeSecond.get(typeList[j]));
+                // 存在する場合
+                type2 = Double.parseDouble(map_TypeSecond.get(Const.typeAry[j]));
             } else {
+                // 存在しない場合、1.0
                 type2 = 1.0;
             }
+            // 合計値
             res = type1 * type2;
             String sres = String.valueOf(res);
+
+            // 補正値ごとに振り分ける。
             switch (sres) {
                 case "4.0":
-                    x4[j] = typeList[j];
-                    System.out.println(" 4.0 : " + x4[j]);
+                    x4[j] = Const.typeAry[j];
                     break;
                 case "2.0":
-                    x2[j] = typeList[j];
-                    System.out.println(" 2.0 : " + x2[j]);
+                    x2[j] = Const.typeAry[j];
                     break;
                 case "1.0":
-                    x1[j] = typeList[j];
-                    System.out.println(" 1.0 : " + x1[j]);
+                    x1[j] = Const.typeAry[j];
                     break;
                 case "0.5":
-                    x05[j] = typeList[j];
-                    System.out.println(" 0.5 : " + x05[j]);
+                    x05[j] = Const.typeAry[j];
                     break;
                 case "0.25":
-                    x025[j] = typeList[j];
-                    System.out.println(" 0.25 : " + x025[j]);
+                    x025[j] = Const.typeAry[j];
                     break;
-                case "0":
-                    x0[j] = typeList[j];
-                    System.out.println(" 0 : " + x0[j]);
+                case "0.0":
+                    x0[j] = Const.typeAry[j];
                     break;
             }
         }
 
-        return null;
+        // 格納
+        map_Result.put("x4", x4);
+        map_Result.put("x2", x2);
+        map_Result.put("1", x1);
+        map_Result.put("1/2", x05);
+        map_Result.put("1/4", x025);
+        map_Result.put("x0", x0);
+
+        return map_Result;
 
     }
-
 }

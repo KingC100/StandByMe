@@ -11,9 +11,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="376.0" prefWidth="400.0" style="-fx-background-color: PeachPuff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="standbyme.FXMLDocumentController">
+<AnchorPane prefHeight="375.0" prefWidth="421.0" style="-fx-background-color: PeachPuff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="standbyme.FXMLDocumentController">
     <children>
-      <GridPane fx:id="gridpane_Top" alignment="CENTER" gridLinesVisible="true" layoutX="2.0" layoutY="80.0" prefHeight="60.0" prefWidth="396.0" style="-fx-background-color: LemonChiffon;">
+      <GridPane fx:id="gridpane_TypeSkill" alignment="CENTER" gridLinesVisible="true" layoutX="7.0" layoutY="80.0" prefHeight="60.0" prefWidth="436.0" style="-fx-background-color: LemonChiffon;">
         <columnConstraints>
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="60.0" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="60.0" />
@@ -28,26 +28,26 @@
          <children>
             <Label fx:id="lbl_TypeFirst" text="タイプ１">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="12.0" />
                </font></Label>
             <Label fx:id="lbl_TypeSecond" text="タイプ２" GridPane.columnIndex="1">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="12.0" />
                </font></Label>
             <Label fx:id="lbl_SkillFirst" text="特性１" GridPane.columnIndex="2">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="12.0" />
                </font></Label>
             <Label fx:id="olbl_TypeFirst" GridPane.rowIndex="1" />
             <Label fx:id="olbl_TypeSecond" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label fx:id="olbl_SkillFirst" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Label fx:id="lbl_SkillSecond" text="特性２" GridPane.columnIndex="3">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="12.0" />
                </font></Label>
             <Label fx:id="lbl_SkillDream" text="夢特性" GridPane.columnIndex="4">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="12.0" />
                </font></Label>
             <Label fx:id="olbl_SkillDream" GridPane.columnIndex="4" GridPane.rowIndex="1" />
             <ImageView fx:id="img_TypeFirst" fitHeight="20.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" GridPane.rowIndex="1" />
@@ -55,16 +55,19 @@
             <Label fx:id="olbl_SkillSecond" GridPane.columnIndex="3" GridPane.rowIndex="1" />
          </children>
       </GridPane>
-      <TextField fx:id="textField" layoutX="46.0" layoutY="33.0" prefHeight="23.0" prefWidth="93.0" />
-      <ImageView fx:id="img_Pokemon" cache="true" fitHeight="77.0" fitWidth="112.0" layoutX="161.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
-      <GridPane fx:id="gridpane_Bottom" alignment="CENTER" gridLinesVisible="true" layoutX="2.0" layoutY="147.0" prefHeight="119.0" prefWidth="396.0" style="-fx-background-color: LemonChiffon;">
+      <TextField fx:id="textField" layoutX="14.0" layoutY="27.0" prefHeight="29.0" prefWidth="121.0">
+         <font>
+            <Font name="Meiryo UI" size="14.0" />
+         </font></TextField>
+      <ImageView fx:id="img_Pokemon" cache="true" fitHeight="77.0" fitWidth="112.0" layoutX="222.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true" />
+      <GridPane fx:id="gridpane_StatusValue" alignment="CENTER" gridLinesVisible="true" layoutX="7.0" layoutY="147.0" prefHeight="119.0" prefWidth="436.0" style="-fx-background-color: LemonChiffon;">
         <columnConstraints>
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="66.0" />
-          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="66.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="66.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="66.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="66.0" />
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="66.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="55.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="55.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="55.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="55.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="55.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="55.0" />
         </columnConstraints>
         <rowConstraints>
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
@@ -75,47 +78,47 @@
          <children>
             <Label fx:id="lbl_H" text="H">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="12.0" />
                </font></Label>
             <Label fx:id="lbl_A" text="A" GridPane.columnIndex="1">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="12.0" />
                </font></Label>
             <Label fx:id="lbl_B" text="B" GridPane.columnIndex="2">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="12.0" />
                </font></Label>
             <Label fx:id="lbl_C" text="C" GridPane.columnIndex="3">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="12.0" />
                </font></Label>
             <Label fx:id="lbl_D" text="D" GridPane.columnIndex="4">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="12.0" />
                </font></Label>
             <Label fx:id="lbl_S" text="S" GridPane.columnIndex="5">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="12.0" />
                </font></Label>
             <Label fx:id="lbl_SV" text="最速" GridPane.rowIndex="2">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="12.0" />
                </font></Label>
             <Label fx:id="lbl_SU" text="準速" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="12.0" />
                </font></Label>
             <Label fx:id="lbl_S0" text="無補無振" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="12.0" />
                </font></Label>
             <Label fx:id="lbl_SV1" text="最速+1" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="12.0" />
                </font></Label>
             <Label fx:id="lbl_SV2" text="最速+2" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="12.0" />
                </font></Label>
             <Label fx:id="olbl_H" GridPane.rowIndex="1" />
             <Label fx:id="olbl_A" GridPane.columnIndex="1" GridPane.rowIndex="1" />
@@ -133,7 +136,7 @@
             <Label fx:id="olbl_S0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
             <Label fx:id="lbl_s" text="最遅" GridPane.columnIndex="5" GridPane.rowIndex="2">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="12.0" />
                </font></Label>
             <Label fx:id="olbl_s" GridPane.columnIndex="5" GridPane.rowIndex="3" />
          </children>
@@ -145,267 +148,293 @@
               <MenuItem fx:id="btn_SearchBattle" mnemonicParsing="false" onAction="#On_SearchBattle" text="対戦考察" />
                   <MenuItem fx:id="btn_SearchWiki" mnemonicParsing="false" onAction="#On_SearchWiki" text="wiki" />
                   <MenuItem fx:id="btn_SearchDic" mnemonicParsing="false" onAction="#On_SearchDic" text="図鑑" />
-                  <MenuItem fx:id="btn_Debug" mnemonicParsing="false" onAction="#On_Debug" text="Unspecified Action" />
+                  <MenuItem fx:id="btn_Debug" mnemonicParsing="false" text="Unspecified Action" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
       <Label fx:id="olbl_Number" layoutX="143.0" layoutY="56.0" opacity="0.0" text="Label" />
-      <GridPane fx:id="gridpane_Bottom1" alignment="CENTER" gridLinesVisible="true" layoutX="2.0" layoutY="273.0" style="-fx-background-color: LemonChiffon;">
+      <GridPane fx:id="gridpane_Affinity" alignment="CENTER" gridLinesVisible="true" layoutX="7.0" layoutY="273.0" style="-fx-background-color: LemonChiffon;">
          <children>
             <Label fx:id="lbl_H1" text="×2" GridPane.rowIndex="1">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="11.0" />
                </font>
             </Label>
             <Label text="×4">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="11.0" />
                </font>
             </Label>
             <Label text="1/2" GridPane.rowIndex="2">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="11.0" />
                </font>
             </Label>
             <Label text="1/4" GridPane.rowIndex="3">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="11.0" />
                </font>
             </Label>
             <Label text="0" GridPane.rowIndex="4">
                <font>
-                  <Font name="System Bold" size="12.0" />
+                  <Font name="Meiryo UI Bold" size="11.0" />
                </font>
             </Label>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <ImageView fx:id="img_x05_2" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <ImageView fx:id="img_x05_1" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
+            <ImageView fx:id="img_x05_3" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="2">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
+            <ImageView fx:id="img_x05_4" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="2">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2">
+            <ImageView fx:id="img_x05_5" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="2">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="2">
+            <ImageView fx:id="img_x05_6" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="2">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="2">
+            <ImageView fx:id="img_x05_7" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="2">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="2">
+            <ImageView fx:id="img_x05_8" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="2">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="2">
+            <ImageView fx:id="img_x05_9" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="2">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+            <ImageView fx:id="img_x4_1" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+            <ImageView fx:id="img_x4_2" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+            <ImageView fx:id="img_x4_3" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
+            <ImageView fx:id="img_x4_4" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
+            <ImageView fx:id="img_x4_5" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6">
+            <ImageView fx:id="img_x4_6" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7">
+            <ImageView fx:id="img_x4_7" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8">
+            <ImageView fx:id="img_x4_8" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9">
+            <ImageView fx:id="img_x4_9" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <ImageView fx:id="img_x2_1" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <ImageView fx:id="img_x2_2" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
+            <ImageView fx:id="img_x2_3" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="1">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1">
+            <ImageView fx:id="img_x2_4" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="1">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1">
+            <ImageView fx:id="img_x2_5" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="1">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1">
+            <ImageView fx:id="img_x2_6" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="1">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="1">
+            <ImageView fx:id="img_x2_7" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="1">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="1">
+            <ImageView fx:id="img_x2_8" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="1">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="1">
+            <ImageView fx:id="img_x2_9" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="1">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
+            <ImageView fx:id="img_x025_1" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="3">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
+            <ImageView fx:id="img_x025_2" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="3">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3">
+            <ImageView fx:id="img_x025_3" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="3">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3">
+            <ImageView fx:id="img_x025_4" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="3">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="3">
+            <ImageView fx:id="img_x025_5" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="3">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
+            <ImageView fx:id="img_x0_1" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.rowIndex="4">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4">
+            <ImageView fx:id="img_x0_2" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="4">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4">
+            <ImageView fx:id="img_x0_3" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3" GridPane.rowIndex="4">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4">
+            <ImageView fx:id="img_x0_4" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.rowIndex="4">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="4">
+            <ImageView fx:id="img_x0_5" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="5" GridPane.rowIndex="4">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4">
+            <ImageView fx:id="img_x0_6" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="4">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="3">
+            <ImageView fx:id="img_x025_6" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.rowIndex="3">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="3">
+            <ImageView fx:id="img_x025_7" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="3">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="4">
+            <ImageView fx:id="img_x0_7" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="7" GridPane.rowIndex="4">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="3">
+            <ImageView fx:id="img_x025_8" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="3">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="3">
+            <ImageView fx:id="img_x025_9" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="3">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="4">
+            <ImageView fx:id="img_x0_8" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.rowIndex="4">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
-            <ImageView fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="4">
+            <ImageView fx:id="img_x0_9" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="9" GridPane.rowIndex="4">
+               <image>
+                  <Image url="@res/types/0.gif" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img_x4_10" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10">
+               <image>
+                  <Image url="@res/types/0.gif" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img_x2_10" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="1">
+               <image>
+                  <Image url="@res/types/0.gif" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img_x05_10" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="2">
+               <image>
+                  <Image url="@res/types/0.gif" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img_x025_10" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="3">
+               <image>
+                  <Image url="@res/types/0.gif" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="img_x0_10" fitHeight="15.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.rowIndex="4">
                <image>
                   <Image url="@res/types/0.gif" />
                </image>
             </ImageView>
          </children>
          <columnConstraints>
-            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="55.2" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="55.0" />
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="37.5" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="37.5" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="37.5" />
             <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="37.5" />
