@@ -20,6 +20,7 @@ import org.xml.sax.SAXException;
  */
 public class GetAffinity {
 
+    // タイプ2の有無
     Boolean bl_Type2 = true;
 
     /**
@@ -68,10 +69,14 @@ public class GetAffinity {
                     }
                 }
 
+                // タイプ2が存在するか判定
                 if (bl_Type2) {
-                    // タイプ1、タイプ2を合わせたタイプ相性の結果を求める。
+                    // タイプ2が存在する場合
+
+                    // タイプ2のタイプ名が正規のものか判定
                     if (typeSecond.equals(((Element) typeInfo.getElementsByTagName("TypeName").item(0)).getTextContent())) {
 
+                        // タイプ1、タイプ2を合わせたタイプ相性の結果を求める。
                         for (String typeList2 : Const.typeAry) {
                             // タイプ相性の格納 <"タイプ名", "ダメージ相性">
                             map_TypeSecond.put(typeList2, ((Element) affinity.getElementsByTagName(typeList2).item(0)).getTextContent());
@@ -99,8 +104,8 @@ public class GetAffinity {
      */
     public Map<String, String[]> CalculateAffinity(Map<String, String> map_TypeFirst, Map<String, String> map_TypeSecond) {
 
-        double type1 = 0;
-        double type2 = 0;
+        double type1;
+        double type2;
         double res;
 
         String[] x4 = new String[Const.typeTotalNumber];
@@ -128,7 +133,7 @@ public class GetAffinity {
             res = type1 * type2;
             String sres = String.valueOf(res);
 
-            // 補正値ごとに振り分ける。
+            // タイプ相性ごとに振り分ける。
             switch (sres) {
                 case "4.0":
                     x4[j] = Const.typeAry[j];

@@ -25,10 +25,11 @@ public class StandByMe extends Application {
         URL url_Empty = StandByMe.class.getResource("res/icon.png"); //src以下を参照する方法。
         Image icon = new Image(url_Empty.toString());
         stage.getIcons().add(icon);
-        // タイトルセット
+        // タイトル名のセット
         stage.setTitle("StandByMe");
         // ウィンドウサイズ固定
         stage.setResizable(false);
+        // 表示
         stage.show();
 
     }

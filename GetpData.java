@@ -35,15 +35,22 @@ public class GetpData {
         DocumentBuilder builder;
         DocumentBuilderFactory dbfactory = DocumentBuilderFactory.newInstance();
 
-        try {           
-            builder = dbfactory.newDocumentBuilder();
+        try {
+            // pData.xmlのurlを取得する。
             GetResourcePath getResourcePath = new GetResourcePath();
             URL url = getResourcePath.GetResourcePath("xml/pData.xml");
+
+            // rootの生成。
+            builder = dbfactory.newDocumentBuilder();
             Document doc = builder.parse(url.openStream());
             Element root = doc.getDocumentElement();
 
+            // ポケモンに含まれる要素名
             Element pokemon, types, individuals, skills;
+
+            // ノードリストの取得。
             NodeList nodeList = root.getElementsByTagName("Pokemon");
+            // 入力名と一致するポケモン名が出るまで回す。
             for (int i = 0; i < nodeList.getLength(); i++) {
 
                 // <Pokemon>ルート
@@ -61,8 +68,8 @@ public class GetpData {
                     // <Skills>ルート
                     skills = (Element) pokemon.getElementsByTagName("Skills").item(0);
 
-                    // タイプ1, 2が同一の場合は1のみ表示(元データによる都合)。
                     pTypeSecond = ((Element) types.getElementsByTagName("TypeSecond").item(0)).getTextContent();
+                    // タイプ1, 2が同一の場合は1のみ表示(元データに)。
                     if (((Element) types.getElementsByTagName("TypeFirst").item(0)).getTextContent().equals(pTypeSecond)) {
                         pTypeSecond = "nothing";
                     }
@@ -84,6 +91,7 @@ public class GetpData {
                     return map;
                 }
             }
+            // 不一致の場合は最後まで回して"0"を返す(?アイコンが表示される)。
             map.put("Number", "0");
         } catch (ParserConfigurationException | SAXException | IOException ex) {
             Logger.getLogger(GetpData.class.getName()).log(Level.SEVERE, null, ex);

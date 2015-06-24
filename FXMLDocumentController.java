@@ -244,6 +244,13 @@ public class FXMLDocumentController implements Initializable {
                 olbl_B.setText("");
                 olbl_C.setText("");
                 olbl_D.setText("");
+                olbl_S.setText("");
+                olbl_SV.setText("");
+                olbl_SU.setText("");
+                olbl_S0.setText("");
+                olbl_SV1.setText("");
+                olbl_SV2.setText("");
+                olbl_s.setText("");
                 // "?"アイコンセット。
                 URL url_Empty = getResourcePath.GetResourcePath("gifs/0.png");
                 img_Empty = new Image(url_Empty.toString());
