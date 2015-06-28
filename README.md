@@ -7,7 +7,7 @@ JavaFXで書いた、
 タイプ相性表の表示を行います。
 
 ショートカットキーで対戦考察wiki, wiki, 図鑑で検索。
-<a href="http://f.hatena.ne.jp/KingCrimson96/20150628201955"><img src="http://img.f.hatena.ne.jp/images/fotolife/K/KingCrimson96/20150628/20150628201955.gif" alt="20150628201955"></a>
+![image_alt_text](https://github.com/KingC100/StandByMe/blob/master/aiee.gif?raw=true)</a>
 第六世代までのポケモンのデータを含んだxmlは
 @arik_a_様のブログのものから。
 
