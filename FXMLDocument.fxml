@@ -125,7 +125,7 @@
             <Label fx:id="olbl_B" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <Label fx:id="olbl_C" GridPane.columnIndex="3" GridPane.rowIndex="1" />
             <Label fx:id="olbl_D" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-            <Label fx:id="olbl_S" style="-fx-background-color: #ff7f50;" GridPane.columnIndex="5" GridPane.rowIndex="1">
+            <Label fx:id="olbl_S" GridPane.columnIndex="5" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font></Label>
